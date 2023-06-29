@@ -62,8 +62,17 @@ There are 4 files each named and seperated by year and quarter Divvy_Trips_YYYY_
 
 ## Process
 
+Tools:
+R - for cleaning and analysis
+Tableau - for visualization
 
+Before anything else we install any necessary packages
 
+First we import our data sets into Rstudio so we can clean them up
+q2_2019 <- read_csv("Divvy_Trips_2019_Q2.csv")
+q3_2019 <- read_csv("Divvy_Trips_2019_Q3.csv")
+q4_2019 <- read_csv("Divvy_Trips_2019_Q4.csv")
+q1_2020 <- read_csv("Divvy_Trips_2020_Q1.csv")
 
 
 
