@@ -129,3 +129,15 @@ q2_2019 <-  mutate(q2_2019, ride_id = as.character(ride_id)
 6. Finally we are able to combine all the data together:
 
 all_trips <- bind_rows(q2_2019, q3_2019,q4_2019,q1_2020)
+
+7. Next we remove and update any columns and align the column values that don't match up with (q1_2020):
+
+all_trips <- all_trips %>%
+
+select(-c(start_lat, start_lng, end_lat, end_lng, birthyear, gender, "01 - Rental Details Duration In Seconds Uncapped", "05 - Member Details Member Birthday Year", "Member Gender", "tripduration"))
+
+all_trips <-  all_trips %>%
+
+mutate(member_casual = recode(member_casual
+,"Subscriber" = "member"
+,"Customer" = "casual"))
