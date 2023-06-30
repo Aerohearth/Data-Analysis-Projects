@@ -80,7 +80,7 @@ I format and combine all the data into one dataset labeling it under all_trips_v
 
 I take the data and start to take stabs at the data starting with the summary, trying to find any differences between casual and member riders. Next I aggregated the data between ride length and member status to get a general overview of how the casual and member riders comapre to each other. Next I decided to seperate the data by member status and the day of the week it was to get an accurate representation of the mean ride length between casual and member riders throughout the week.
 
-### Data Analysis & Share
+## Data Analysis & Share
 
 #### Tool:
 
@@ -90,7 +90,12 @@ Tableau - for visualization
 
 ![b89cf858-7cd2-4f9f-89ff-7878adba77c1](https://github.com/Aerohearth/Data-Analysis-Projects/assets/137971084/938a5651-6033-4b76-a460-60c97a5d1412)
 
+These sheets gave me insight into how casual riders tend to have exponentially longer ride lengths compared to member riders and in turn, memebers have an exponentially higher number of rides.
 
-These sheets gave me insight into how casual riders tend to have exponentially longer ride lengths compared to member riders.
+## Act
 
-So I concluded the best way to get
+So I concluded the three best ways to get customers to transfer over to a membership is:
+
+1. Introduce some form of point based-system that will increase points depending on how long they ride for. Then reward them with some form of cashback or bike type upgrade when they reach different point goals.
+2. Create more membership options that will allow casual riders to buy more rides in bulk, instead of relying on daily purchases.
+3. Introduce some special bonus' in different mobile games that rely on movement when poeple join the membership (such as a mix of amazon prime giving twitch subs every month combined with pokemon go)
