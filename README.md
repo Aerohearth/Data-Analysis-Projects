@@ -8,7 +8,8 @@ share, and act.
 
 ## Quick links
 
-Data Source: divvy-tripdata // Add links & any
+Data Source: [divvy-tripdata](https://divvy-tripdata.s3.amazonaws.com/index.html)
+[Data Cleaning](https://github.com/Aerohearth/Data-Analysis-Projects/blob/main/Data%20Cleaning)
 
 ## Background
 
@@ -68,76 +69,6 @@ R - for cleaning and analysis
 
 Tableau - for visualization
 
-### Data Cleaning
+### Data Cleaning:
+I format and combine all the data into one dataset labeling it under [all_trips](url). After, I create columns detailing the date, day, month, year, day of the week, and ride_length to add more keys I can organize/analyze my data by.
 
-1. Before anything else we install and library our core packages
-
-  install.packages("tidyverse")
-
-  library(tidyverse)
-
-2. Next we import our data sets into Rstudio so we can clean them up
-
-q2_2019 <- read_csv("Divvy_Trips_2019_Q2.csv")
-
-q3_2019 <- read_csv("Divvy_Trips_2019_Q3.csv")
-
-q4_2019 <- read_csv("Divvy_Trips_2019_Q4.csv")
-
-q1_2020 <- read_csv("Divvy_Trips_2020_Q1.csv")
-
-3. Before we start taking any jabs at our data we need to format all the data so we have an easier time navigating it. We will format it the same as the most recent dataset (q1_2020) as this will most likely be the format they will continue with):
-
-q2_2019 <- rename(q2_2019, ride_id = "01 - Rental Details Rental ID", rideable_type = "01 - Rental Details Bike ID", started_at = "01 - Rental Details Local Start Time", ended_at = "01 - Rental Details Local End Time", start_station_name = "03 - Rental Start Station Name", start_station_id = "03 - Rental Start Station ID", end_station_name = "02 - Rental End Station Name", end_station_id = "02 - Rental End Station ID", member_casual = "User Type")
-
-q3_2019 <- rename(q3_2019, ride_id = trip_id, rideable_type = bikeid, started_at = start_time, ended_at = end_time, start_station_name = from_station_name, start_station_id = from_station_id, end_station_name = to_station_name, end_station_id = to_station_id, member_casual = usertype)
-
-q4_2019 <- rename(q4_2019, ride_id = trip_id, rideable_type = bikeid, started_at = start_time, ended_at = end_time, start_station_name = from_station_name, start_station_id = from_station_id, end_station_name = to_station_name, end_station_id = to_station_id, member_casual = usertype)
-
-4. Next we ensure that each datasets column names match up to (q1_2020) and change any that don't:
-
-colnames(q3_2019)
-
-colnames(q4_2019)
-
-colnames(q2_2019) 
-
-colnames(q1_2020)
-
-q2_2019 <- rename(q2_2019, ride_id = "01 - Rental Details Rental ID", rideable_type = "01 - Rental Details Bike ID", started_at = "01 - Rental Details Local Start Time", ended_at = "01 - Rental Details Local End Time", start_station_name = "03 - Rental Start Station Name", start_station_id = "03 - Rental Start Station ID", end_station_name = "02 - Rental End Station Name", end_station_id = "02 - Rental End Station ID", member_casual = "User Type")
-
-q3_2019 <- rename(q3_2019, ride_id = trip_id, rideable_type = bikeid, started_at = start_time, ended_at = end_time, start_station_name = from_station_name, start_station_id = from_station_id, end_station_name = to_station_name, end_station_id = to_station_id, member_casual = usertype)
-
-q4_2019 <- rename(q4_2019, ride_id = trip_id, rideable_type = bikeid, started_at = start_time, ended_at = end_time, start_station_name = from_station_name, start_station_id = from_station_id, end_station_name = to_station_name, end_station_id = to_station_id, member_casual = usertype)
-
-5. After formating we check the data types of our columns to ensure that we can use the data together in our analysis
-
-str(q2_2019)
-str(q3_2019)
-str(q4_2019)
-str(q1_2020)
-
-q4_2019 <-  mutate(q4_2019, ride_id = as.character(ride_id)
-,rideable_type = as.character(rideable_type))
-
-q3_2019 <-  mutate(q3_2019, ride_id = as.character(ride_id)
-,rideable_type = as.character(rideable_type))
-
-q2_2019 <-  mutate(q2_2019, ride_id = as.character(ride_id)
-,rideable_type = as.character(rideable_type))
-
-6. Finally we are able to combine all the data together:
-
-all_trips <- bind_rows(q2_2019, q3_2019,q4_2019,q1_2020)
-
-7. Next we remove and update any columns and align the column values that don't match up with (q1_2020):
-
-all_trips <- all_trips %>%
-
-select(-c(start_lat, start_lng, end_lat, end_lng, birthyear, gender, "01 - Rental Details Duration In Seconds Uncapped", "05 - Member Details Member Birthday Year", "Member Gender", "tripduration"))
-
-all_trips <-  all_trips %>%
-
-mutate(member_casual = recode(member_casual
-,"Subscriber" = "member"
-,"Customer" = "casual"))
