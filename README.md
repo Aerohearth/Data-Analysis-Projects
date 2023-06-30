@@ -62,18 +62,70 @@ There are 4 files each named and seperated by year and quarter Divvy_Trips_YYYY_
 
 ## Process
 
-Tools:
+### Tools:
+
 R - for cleaning and analysis
+
 Tableau - for visualization
 
-Before anything else we install any necessary packages
+### Data Cleaning
 
-First we import our data sets into Rstudio so we can clean them up
+1. Before anything else we install and library our core packages
+
+  install.packages("tidyverse")
+
+  library(tidyverse)
+
+2. Next we import our data sets into Rstudio so we can clean them up
+
 q2_2019 <- read_csv("Divvy_Trips_2019_Q2.csv")
+
 q3_2019 <- read_csv("Divvy_Trips_2019_Q3.csv")
+
 q4_2019 <- read_csv("Divvy_Trips_2019_Q4.csv")
+
 q1_2020 <- read_csv("Divvy_Trips_2020_Q1.csv")
 
+3. Before we start taking any jabs at our data we need to format all the data so we have an easier time navigating it. We will format it the same as the most recent dataset (q1_2020) as this will most likely be the format they will continue with):
 
+q2_2019 <- rename(q2_2019, ride_id = "01 - Rental Details Rental ID", rideable_type = "01 - Rental Details Bike ID", started_at = "01 - Rental Details Local Start Time", ended_at = "01 - Rental Details Local End Time", start_station_name = "03 - Rental Start Station Name", start_station_id = "03 - Rental Start Station ID", end_station_name = "02 - Rental End Station Name", end_station_id = "02 - Rental End Station ID", member_casual = "User Type")
 
+q3_2019 <- rename(q3_2019, ride_id = trip_id, rideable_type = bikeid, started_at = start_time, ended_at = end_time, start_station_name = from_station_name, start_station_id = from_station_id, end_station_name = to_station_name, end_station_id = to_station_id, member_casual = usertype)
 
+q4_2019 <- rename(q4_2019, ride_id = trip_id, rideable_type = bikeid, started_at = start_time, ended_at = end_time, start_station_name = from_station_name, start_station_id = from_station_id, end_station_name = to_station_name, end_station_id = to_station_id, member_casual = usertype)
+
+4. Next we ensure that each datasets column names match up to (q1_2020) and change any that don't:
+
+colnames(q3_2019)
+
+colnames(q4_2019)
+
+colnames(q2_2019) 
+
+colnames(q1_2020)
+
+q2_2019 <- rename(q2_2019, ride_id = "01 - Rental Details Rental ID", rideable_type = "01 - Rental Details Bike ID", started_at = "01 - Rental Details Local Start Time", ended_at = "01 - Rental Details Local End Time", start_station_name = "03 - Rental Start Station Name", start_station_id = "03 - Rental Start Station ID", end_station_name = "02 - Rental End Station Name", end_station_id = "02 - Rental End Station ID", member_casual = "User Type")
+
+q3_2019 <- rename(q3_2019, ride_id = trip_id, rideable_type = bikeid, started_at = start_time, ended_at = end_time, start_station_name = from_station_name, start_station_id = from_station_id, end_station_name = to_station_name, end_station_id = to_station_id, member_casual = usertype)
+
+q4_2019 <- rename(q4_2019, ride_id = trip_id, rideable_type = bikeid, started_at = start_time, ended_at = end_time, start_station_name = from_station_name, start_station_id = from_station_id, end_station_name = to_station_name, end_station_id = to_station_id, member_casual = usertype)
+
+5. After formating we check the data types of our columns to ensure that we can use the data together in our analysis
+
+str(q2_2019)
+str(q3_2019)
+str(q4_2019)
+str(q1_2020)
+
+q4_2019 <-  mutate(q4_2019, ride_id = as.character(ride_id)
+,rideable_type = as.character(rideable_type))
+
+q3_2019 <-  mutate(q3_2019, ride_id = as.character(ride_id)
+,rideable_type = as.character(rideable_type))
+
+q2_2019 <-  mutate(q2_2019, ride_id = as.character(ride_id)
+,rideable_type = as.character(rideable_type))
+
+6. Finally we are able to combine all the data together:
+
+all_trips <- bind_rows(q2_2019, q3_2019,q4_2019,q1_2020)
