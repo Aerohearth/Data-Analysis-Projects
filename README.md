@@ -9,7 +9,10 @@ share, and act.
 ## Quick links
 
 Data Source: [divvy-tripdata](https://divvy-tripdata.s3.amazonaws.com/index.html)
-[Data Cleaning](https://github.com/Aerohearth/Data-Analysis-Projects/blob/main/Data%20Cleaning)
+
+[Data Cleaning Queries](https://github.com/Aerohearth/Data-Analysis-Projects/blob/main/Data%20Cleaning)
+
+[Data Exploration Queries](https://github.com/Aerohearth/Data-Analysis-Projects/blob/main/Data%20Cleaning)
 
 ## Background
 
@@ -70,5 +73,13 @@ R - for cleaning and analysis
 Tableau - for visualization
 
 ### Data Cleaning:
-I format and combine all the data into one dataset labeling it under [all_trips](url). After, I create columns detailing the date, day, month, year, day of the week, and ride_length to add more keys I can organize/analyze my data by.
 
+[Queries](https://github.com/Aerohearth/Data-Analysis-Projects/blob/main/Data%20Cleaning)
+
+I format and combine all the data into one dataset labeling it under [all_trips](). After, I create columns detailing the date, day, month, year, day of the week, and ride_length to add more keys I can analyze my data by.
+
+### Data Exploration:
+
+I take the data and start to take stabs at the data starting with the summary, trying to find any differences between casual and member riders. Next I aggregated the data between ride length and member status to get a general overview of how the casual and member riders comapre to each other. Next I decided to seperate the data by member status and the day of the week it was to get an accurate representation of the mean ride length between casual and member riders throughout the week.
+
+### Data Analysis
