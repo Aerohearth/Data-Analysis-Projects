@@ -90,9 +90,8 @@ data set: [avg_ride_length](https://github.com/Aerohearth/Data-Analysis-Projects
 
 ![Sheet 1](https://github.com/Aerohearth/Data-Analysis-Projects/assets/137971084/77165b44-fd66-46d6-aa95-91947a0827f0)
 
-![b89cf858-7cd2-4f9f-89ff-7878adba77c1](https://github.com/Aerohearth/Data-Analysis-Projects/assets/137971084/938a5651-6033-4b76-a460-60c97a5d1412)
 
-These sheets gave me insight into how casual riders tend to have exponentially longer ride lengths compared to member riders and in turn, memebers have an exponentially higher number of rides.
+This sheet gave me insight into how casual riders tend to have exponentially longer ride lengths compared to member riders and in turn, members have an exponentially higher number of rides.
 
 ## Act
 
